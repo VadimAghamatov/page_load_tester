@@ -6,7 +6,7 @@ from art import tprint
 
 def main():
     
-    tprint('Web loading check', font='bulbhead')
+    tprint('Web loading check', font='random')
     url = input("Введите url страницы для проверки её времени загрузки: ")
 
     while True:
