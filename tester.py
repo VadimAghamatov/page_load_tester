@@ -17,15 +17,38 @@ def main():
                 open_this_url = urlopen("https://" + url)  
     
             start_time = time.time()  
-            open_this_url.read()  
+            open_this_url.read()            
             end_time = time.time()  
             open_this_url.close() 
             time_to_load = end_time - start_time
- 
             return time_to_load
         time.sleep(1)   #Время между повторным запросом.
 
-        print(f"\nВремя загрузки страницы {url} составляет {get_page_load_time(url):.2} секунды.")
+        def get_page_info(url):
+            if ("https" or "http") in url:  
+                open_this_url = urlopen(url)  
+            else:
+                open_this_url = urlopen("https://" + url)  
+
+            page_info = open_this_url.info()            
+            
+            return page_info
+        time.sleep(1)   #Время между повторным запросом.
+
+        def get_page_size(url):
+            if ("https" or "http") in url:  
+                open_this_url = urlopen(url)  
+            else:
+                open_this_url = urlopen("https://" + url)  
+
+            page_size = open_this_url.length           
+            
+            return page_size
+        time.sleep(1)   #Время между повторным запросом.
+
+        print(f"\nВремя загрузки страницы {url} составляет {get_page_load_time(url):.2} секунды. \
+             \nРазмер страницы: {get_page_size(url)} байт. \nИнформация о странице: {get_page_info(url)}")
+        
         ###Завершение скрипта###
 
 
